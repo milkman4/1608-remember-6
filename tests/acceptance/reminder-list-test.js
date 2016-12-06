@@ -18,6 +18,17 @@ test('viewing the homepage', function(assert) {
   });
 });
 
+test('viewing the homepage', function(assert) {
+  server.createList('reminder', 15);
+
+  visit('/');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/');
+    assert.equal(Ember.$('.spec-reminder-item').length, 15);
+  });
+});
+
 test('clicking on an individual item', function(assert) {
   server.createList('reminder', 5);
 
