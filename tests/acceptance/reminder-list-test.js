@@ -29,14 +29,38 @@ test('viewing the homepage', function(assert) {
   });
 });
 
-skip('clicking on an individual item', function(assert) {
+test('clicking on an individual item', function(assert) {
   server.createList('reminder', 5);
 
   visit('/');
   click('.spec-reminder-item:first');
 
   andThen(function() {
-    assert.equal(currentURL(), '/1');
-    assert.equal(Ember.$('.spec-reminder-item:first').text().trim(), Ember.$('.spec-reminder-title').text().trim());
+    assert.equal(currentURL(), '/reminders/1');
+    assert.equal(Ember.$('.spec-reminder-item:first').length, 1);
+  });
+});
+
+test('clicking on an individual item shows one reminder', function(assert) {
+  server.createList('reminder', 5);
+
+  visit('/');
+  click('.spec-reminder-item:first');
+
+  andThen(function() {
+    assert.equal(find('h2').length, 1);
+    assert.equal(find('h5').length, 1);
+    assert.equal(find('p').length, 1);
+  });
+});
+
+test('clicking on an individual item adds an active class to that link', function(assert) {
+  server.createList('reminder', 5);
+
+  visit('/');
+  click('.spec-reminder-item:first');
+
+  andThen(function() {
+    assert.equal(find('.active').length, 1);
   });
 });
