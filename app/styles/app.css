@@ -1,3 +1,7 @@
 .active {
   color: aqua;
 }
+
+li {
+  list-style: none;
+}

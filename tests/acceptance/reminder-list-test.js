@@ -29,18 +29,6 @@ test('viewing the homepage will reroute to /reminders and show 15 reminders', fu
   });
 });
 
-test('clicking on an individual item will show only one item and its details on the page', function(assert) {
-  server.createList('reminder', 5);
-
-  visit('/');
-  click('.spec-reminder-item:first');
-
-  andThen(function() {
-    assert.equal(currentURL(), '/reminders/1');
-    assert.equal(Ember.$('.spec-reminder-item:first').length, 1);
-  });
-});
-
 test('clicking on an individual item shows one reminder and its details on the page', function(assert) {
   server.createList('reminder', 5);
 
@@ -48,7 +36,7 @@ test('clicking on an individual item shows one reminder and its details on the p
   click('.spec-reminder-item:first');
 
   andThen(function() {
-    assert.equal(find('h2').length, 1);
+    assert.equal(find('h2').text(), find('.spec-reminder-item:first').text().trim());
     assert.equal(find('h5').length, 1);
     assert.equal(find('p').length, 1);
   });
