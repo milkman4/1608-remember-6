@@ -7,7 +7,7 @@ import Ember from 'ember';
 
 moduleForAcceptance('Acceptance | reminders list');
 
-test('viewing the homepage will reroute to /reminders', function(assert) {
+test('viewing the homepage will reroute to /reminders and show 5 reminders', function(assert) {
   server.createList('reminder', 5);
 
   visit('/');
@@ -18,7 +18,7 @@ test('viewing the homepage will reroute to /reminders', function(assert) {
   });
 });
 
-test('viewing the homepage', function(assert) {
+test('viewing the homepage will reroute to /reminders and show 15 reminders', function(assert) {
   server.createList('reminder', 15);
 
   visit('/');
@@ -29,7 +29,7 @@ test('viewing the homepage', function(assert) {
   });
 });
 
-test('clicking on an individual item', function(assert) {
+test('clicking on an individual item will show only one item and its details on the page', function(assert) {
   server.createList('reminder', 5);
 
   visit('/');
@@ -41,7 +41,7 @@ test('clicking on an individual item', function(assert) {
   });
 });
 
-test('clicking on an individual item shows one reminder', function(assert) {
+test('clicking on an individual item shows one reminder and its details on the page', function(assert) {
   server.createList('reminder', 5);
 
   visit('/');
