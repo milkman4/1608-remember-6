@@ -7,6 +7,17 @@ import Ember from 'ember';
 
 moduleForAcceptance('Acceptance | reminders list');
 
+
+test('viewing the homepage will reroute to /reminders, show 0 reminders, and display the welcome page', function(assert) {
+  visit('/');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/reminders');
+    assert.equal(Ember.$('.spec-reminder-item').length, 0);
+    assert.equal(find('.reminder-welcome').length, 1)
+  });
+});
+
 test('viewing the homepage will reroute to /reminders and show 5 reminders', function(assert) {
   server.createList('reminder', 5);
 
