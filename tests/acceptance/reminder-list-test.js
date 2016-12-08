@@ -36,6 +36,7 @@ test('clicking on an individual item shows one reminder and its details on the p
   click('.spec-reminder-item:first');
 
   andThen(function() {
+    assert.equal(currentURL(), '/reminders/1');
     assert.equal(find('h2').text(), find('.spec-reminder-item:first').text().trim());
     assert.equal(find('h5').length, 1);
     assert.equal(find('p').length, 1);
