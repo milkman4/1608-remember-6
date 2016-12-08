@@ -1,3 +1,4 @@
+{{#if model}}
 <ul class="reminder-list">
   {{#each model as |reminder|}}
     {{#link-to 'reminders.reminder' reminder}}
@@ -7,6 +8,10 @@
     {{/link-to}}
   {{/each}}
 </ul>
+{{else}}
+<p>Welcome to your notes, click 'new' to add a new note</p>
+{{/if}}
+
 
 {{#link-to 'reminders.new'}}New{{/link-to}}
 
