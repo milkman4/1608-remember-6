@@ -1,0 +1,18 @@
+<!-- {{yield}} -->
+<h1>New Reminder</h1>
+
+<form class="add-new--form" {{action 'addNew' on="submit"}}>
+ <label>
+   Title:
+   {{input class="input-title" type="text" value=title}}
+ </label>
+ <label>
+   Date:
+   {{input class="input-date" type="date" value=date}}
+ </label>
+ <label>
+   Notes:
+   {{input class="input-notes" type="text" value=notes}}
+ </label>
+  {{input class="input-submit" type="submit"}}
+</form>
