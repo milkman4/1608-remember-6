@@ -1,12 +1,16 @@
-<ul class="reminder-list">
-  {{#each model as |reminder|}}
-    {{#link-to 'reminders.reminder' reminder}}
-      <li class='spec-reminder-item'>
-          {{reminder.title}}
-      </li>
-    {{/link-to}}
-  {{/each}}
-</ul>
+{{#if model}}
+  <ul class="reminder-list">
+    {{#each model as |reminder|}}
+      {{#link-to 'reminders.reminder' reminder}}
+        <li class='spec-reminder-item'>
+            {{reminder.title}}
+        </li>
+      {{/link-to}}
+    {{/each}}
+  </ul>
+{{else}}
+  <p class="reminder-welcome">Welcome to your notes, click 'new' to add a new note</p>
+{{/if}}
 
 {{#link-to 'reminders.new'}}New{{/link-to}}
 
