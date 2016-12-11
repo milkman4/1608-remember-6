@@ -1,6 +1,6 @@
 <!-- {{yield}} -->
 
-<form class="add-new--form" {{action 'addNew' on="submit"}}>
+<form class="add-new--form" {{action 'handleSave' on="submit"}}>
  <label>
    Title:
    {{input class="input-title" type="text" value=title}}
@@ -13,5 +13,5 @@
    Notes:
    {{input class="input-notes" type="text" value=notes}}
  </label>
-  {{input class="input-submit" type="submit"}}
+  {{input class="input-submit" type="submit" value="save"}}
 </form>
