@@ -21,6 +21,11 @@ export default Ember.Component.extend({
             this.setProperties({ title: '', date: '', notes: '' });
           });
         }
+      },
+      rollback(reminderModel){
+        if(reminderModel.get('hasDirtyAttributes')){
+          reminderModel.rollbackAttributes()
+        }
       }
     }
 });
