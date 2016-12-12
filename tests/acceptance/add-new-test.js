@@ -29,7 +29,7 @@ test('filling out the add-new form and clicking submit will render a reminder on
 test('clicking on an item in the reminders list renders the date and notes on the page', function(assert) {
   visit('reminders/new');
   fillIn('.input-title', 'My new reminder');
-  fillIn('.input-date', '10/12/2016');
+  fillIn('.input-date', '2016-10-08');
   fillIn('.input-notes', 'My reminder notes');
   click('.input-submit');
 
@@ -40,7 +40,7 @@ test('clicking on an item in the reminders list renders the date and notes on th
   andThen(function() {
     assert.equal(currentURL(), '/reminders/1');
     assert.equal(find('.spec-reminder-item').text().trim(), 'My new reminder');
-    assert.equal(find('.reminder-date').text().trim(), '10/12/2016');
+    assert.equal(find('.reminder-date').text().trim(), '2016-10-07');
     assert.equal(find('.reminder-notes').text().trim(), 'My reminder notes');
   });
 });
