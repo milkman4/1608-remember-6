@@ -1,5 +1,3 @@
-<!-- {{yield}} -->
-
 <form class="add-new--form" {{action 'handleSave' reminder on="submit"}}>
  <label>
    Title:
@@ -7,7 +5,7 @@
  </label>
  <label>
    Date:
-   {{bootstrap-datepicker class="input-date" value=date}}
+   {{input class="input-date" type="date" value=date}}
  </label>
  <label>
    Notes:
@@ -17,3 +15,7 @@
   {{input class="input-submit" type="submit" value="save"}}
 
 </form>
+
+{{#if edit}}
+  <button class="input-revert {{if reminder.hasDirtyAttributes "enabled"}}" {{action 'rollback' reminder on="click"}}>Revert</button>
+{{/if}}

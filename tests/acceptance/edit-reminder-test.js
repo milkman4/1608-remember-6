@@ -16,7 +16,7 @@ test('visiting /reminders/edit/1 will route to the correct url', function(assert
 test('editing a reminder updates the value in the database', function(assert) {
   visit('reminders/new');
   fillIn('.input-title', 'My new reminder');
-  fillIn('.input-date', '10.12.2016');
+  fillIn('.input-date', '2016-10-10');
   fillIn('.input-notes', 'My reminder notes');
   click('.input-submit');
 
@@ -34,13 +34,55 @@ test('editing a reminder updates the value in the database', function(assert) {
   });
 
   fillIn('.input-title', 'My new reminder edited');
+  fillIn('.input-date', '2016-10-08');
   fillIn('.input-notes', 'My reminder notes edited');
   click('.input-submit');
 
   andThen(function() {
     assert.equal(currentURL(), '/reminders/1');
     assert.equal(find('.spec-reminder-item').text().trim(), 'My new reminder edited');
+    assert.equal(find('.reminder-date').text().trim(), '2016-10-08');
     assert.equal(find('.reminder-notes').text().trim(), 'My reminder notes edited');
+  });
+
+});
+
+test('while editing a reminder, revert will send the values back to the original values', function(assert) {
+  visit('reminders/new');
+  fillIn('.input-title', 'My new reminder');
+  fillIn('.input-date', '2016-10-10');
+  fillIn('.input-notes', 'My reminder notes');
+  click('.input-submit');
+
+  andThen(function() {
+    click('.spec-reminder-item');
+  })
+
+  andThen(function() {
+    assert.equal(currentURL(), '/reminders/1');
+    click('.reminder-edit');
+  });
+
+  andThen(function() {
+    assert.equal(currentURL(), '/reminders/edit/1');
+  });
+
+  fillIn('.input-title', 'My new reminder edited');
+  fillIn('.input-date', '2016-10-08');
+  fillIn('.input-notes', 'My reminder notes edited');
+
+  andThen(function() {
+    assert.equal(find('.input-title').val().trim(), 'My new reminder edited');
+    assert.equal(find('.input-date').val().trim(), '2016-10-08');
+    assert.equal(find('.input-notes').val().trim(), 'My reminder notes edited');
+  });
+
+  click('.input-revert');
+
+  andThen(function() {
+    assert.equal(find('.input-title').val().trim(), 'My new reminder');
+    assert.equal(find('.input-date').val().trim(), '2016-10-09');
+    assert.equal(find('.input-notes').val().trim(), 'My reminder notes');
   });
 
 });
