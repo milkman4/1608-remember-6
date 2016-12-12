@@ -26,10 +26,10 @@ test('filling out the add-new form and clicking submit will render a reminder on
   });
 });
 
-skip('clicking on an item in the reminders list renders the date and notes on the page', function(assert) {
+test('clicking on an item in the reminders list renders the date and notes on the page', function(assert) {
   visit('reminders/new');
   fillIn('.input-title', 'My new reminder');
-  fillIn('.input-date', '1989-03-24');
+  fillIn('.input-date', '10.12.2016');
   fillIn('.input-notes', 'My reminder notes');
   click('.input-submit');
 

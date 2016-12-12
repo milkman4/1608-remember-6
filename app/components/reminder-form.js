@@ -11,14 +11,14 @@ export default Ember.Component.extend({
     handleSave(reminderModel) {
       let reminder = this.getProperties('title', 'date', 'notes', 'edit');
       reminder.date = new Date(reminder.date);
-      if(!reminder.edit) {
+      if(reminder.edit) {
+        this.get('store').findRecord('reminder', reminderModel.id).then((reminderModel) => {
+          reminderModel.save()
+          return this.rerouteBack(reminderModel)
+        });
+      } else {
           this.get('store').createRecord('reminder', reminder).save().then(() => {
             this.setProperties({ title: '', date: '', notes: '' });
-          });
-      } else {
-          this.get('store').findRecord('reminder', reminderModel.id).then((reminderModel) => {
-            reminderModel.save()
-            return this.rerouteBack(reminderModel)
           });
         }
       }
