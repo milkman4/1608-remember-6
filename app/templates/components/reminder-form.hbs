@@ -13,5 +13,13 @@
    Notes:
    {{input class="input-notes" type="text" value=notes}}
  </label>
-  {{input class="input-submit" type="submit" value="save"}}
+
+  {{#if save}}
+    {{input class="input-submit" type="submit" value="save"}}
+  {{else}}
+    {{#link-to 'reminders.reminder' reminder}}
+      {{input class="input-submit" type="submit" value="save"}}
+    {{/link-to}}
+  {{/if}}
+
 </form>

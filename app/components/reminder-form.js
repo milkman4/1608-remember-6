@@ -12,19 +12,16 @@ export default Ember.Component.extend({
   actions: {
     handleSave() {
       let reminder = this.getProperties('title', 'date', 'notes', 'saveOrEdit');
-      switch(reminder.saveOrEdit){
-        case 'save':
+      if(reminder.save) {
           reminder.date = new Date(reminder.date);
           this.get('store').createRecord('reminder', reminder).save().then(() => {
             this.setProperties({ title: '', date: '', notes: '' });
           });
-          break;
-        case 'edit':
-          // this.transitionToRoute('reminders.reminder', reminder);
+      } else {
           let reminder = this.getProperties('id','title', 'date', 'notes', 'saveOrEdit');
           console.log(reminder);
           this.get('router').transitionTo('reminders.reminder', reminder.id);
-        break;
+        }
       }
     }
   }
