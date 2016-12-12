@@ -1,5 +1,12 @@
-{{outlet}}
+{{#with model as |reminder|}}
 
-<h2 class="reminder-title">{{model.title}}</h2>
-<h5 class="reminder-date">{{model.date}}</h5>
-<p class="reminder-notes">{{model.notes}}</p>
+  <h2 class="reminder-title">{{reminder.title}}</h2>
+  <h5 class="reminder-date">{{reminder.date}}</h5>
+  <p class="reminder-notes">{{reminder.notes}}</p>
+
+  {{#link-to 'reminders.edit' reminder}}
+    <button class="reminder-edit">Edit</button>
+  {{/link-to}}
+{{/with}}
+
+{{outlet}}

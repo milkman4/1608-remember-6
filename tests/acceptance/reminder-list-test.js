@@ -55,12 +55,23 @@ test('clicking on an individual item shows one reminder and its details on the p
 });
 
 test('clicking on an individual item adds an active class to that link', function(assert) {
-  server.createList('reminder', 5);
-
-  visit('/');
-  click('.spec-reminder-item:first');
+  visit('reminders/new');
+  fillIn('.input-title', 'My new reminder');
+  fillIn('.input-date', '10.12.2016');
+  fillIn('.input-notes', 'My reminder notes');
+  click('.input-submit');
 
   andThen(function() {
-    assert.equal(find('.active').length, 1);
-  });
+    click('.spec-reminder-item');
+  })
+
+  andThen(function() {
+    assert.equal(currentURL(), '/reminders/1');
+    click('.spec-reminder-item');
+  })
+
+  andThen(function() {
+    click('.spec-reminder-item');
+  })
+
 });

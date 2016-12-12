@@ -1,0 +1,9 @@
+{{#with model as |reminder|}}
+  {{reminder-form
+    rerouteBack=(action "reroute" reminder)
+    reminder=reminder
+    edit=true
+    title=reminder.title
+    date=reminder.date
+    notes=reminder.notes}}
+{{/with}}

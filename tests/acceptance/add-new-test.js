@@ -26,21 +26,21 @@ test('filling out the add-new form and clicking submit will render a reminder on
   });
 });
 
-skip('clicking on an item in the reminders list renders the date and notes on the page', function(assert) {
+test('clicking on an item in the reminders list renders the date and notes on the page', function(assert) {
   visit('reminders/new');
   fillIn('.input-title', 'My new reminder');
-  fillIn('.input-date', '1989-03-24');
+  fillIn('.input-date', '10/12/2016');
   fillIn('.input-notes', 'My reminder notes');
   click('.input-submit');
 
   andThen(function() {
     click('.spec-reminder-item');
-  })
+  });
 
   andThen(function() {
     assert.equal(currentURL(), '/reminders/1');
     assert.equal(find('.spec-reminder-item').text().trim(), 'My new reminder');
-    assert.equal(find('.reminder-date').text().trim(), 'Thu Mar 24 1989 17:00:00 GMT-0700 (MST)');
+    assert.equal(find('.reminder-date').text().trim(), '10/12/2016');
     assert.equal(find('.reminder-notes').text().trim(), 'My reminder notes');
   });
 });
