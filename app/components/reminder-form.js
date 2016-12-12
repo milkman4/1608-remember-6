@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   title: '',
   date: '',
   notes: '',
+  edit: false,
 
   actions: {
     handleSave(reminderModel) {
