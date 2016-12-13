@@ -21,7 +21,7 @@ test('filling out the add-new form and clicking submit will render a reminder on
   click('.input-submit');
 
   andThen(function() {
-    assert.equal(currentURL(), 'reminders/new');
+    assert.equal(currentURL(), '/reminders');
     assert.equal(find('.spec-reminder-item').text().trim(), 'My new reminder');
   });
 });
@@ -40,7 +40,7 @@ test('clicking on an item in the reminders list renders the date and notes on th
   andThen(function() {
     assert.equal(currentURL(), '/reminders/1');
     assert.equal(find('.spec-reminder-item').text().trim(), 'My new reminder');
-    assert.equal(find('.reminder-date').text().trim(), '2016-10-07');
+    assert.equal(find('.reminder-date').text().trim(), '2016-10-08');
     assert.equal(find('.reminder-notes').text().trim(), 'My reminder notes');
   });
 });

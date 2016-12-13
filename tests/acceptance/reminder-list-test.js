@@ -73,5 +73,50 @@ test('clicking on an individual item adds an active class to that link', functio
   andThen(function() {
     click('.spec-reminder-item');
   })
+});
 
+test('clicking on a new item in the reminder list deletes it', function(assert) {
+  visit('reminders/new');
+  fillIn('.input-title', 'My new reminder');
+  click('.input-submit');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/reminders');
+    assert.equal(find('.spec-reminder-item').text().trim(), 'My new reminder');
+  });
+
+  click('.reminders-delete');
+
+  andThen(function() {
+    assert.equal(find('.spec-reminder-item').length, 0)
+  })
+});
+
+test('clicking on the delete button in the reminder details deletes it', function(assert) {
+  visit('reminders/new');
+  fillIn('.input-title', 'My new reminder');
+  fillIn('.input-notes', 'My reminder notes');
+  click('.input-submit');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/reminders');
+    assert.equal(find('.spec-reminder-item').text().trim(), 'My new reminder');
+  });
+
+  click('.spec-reminder-item');
+
+  andThen(function() {
+    assert.equal(currentURL(), '/reminders/1');
+    assert.equal(find('.spec-reminder-item').text().trim(), 'My new reminder');
+    assert.equal(find('.reminder-notes').text().trim(), 'My reminder notes');
+  });
+
+  andThen(function(){
+    click('.reminder-delete');
+  });
+
+  andThen(function() {
+    assert.equal(currentURL(), '/reminders');
+    assert.equal(find('.spec-reminder-item').length, 0)
+  })
 });

@@ -81,7 +81,7 @@ test('while editing a reminder, revert will send the values back to the original
 
   andThen(function() {
     assert.equal(find('.input-title').val().trim(), 'My new reminder');
-    assert.equal(find('.input-date').val().trim(), '2016-10-09');
+    assert.equal(find('.input-date').val().trim(), '2016-10-10');
     assert.equal(find('.input-notes').val().trim(), 'My reminder notes');
   });
 
