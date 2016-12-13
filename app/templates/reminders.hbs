@@ -6,6 +6,9 @@
             {{reminder.title}}
         </li>
       {{/link-to}}
+      {{#if reminder.hasDirtyAttributes}}
+        <p class="unsaved-changes">there are unsaved changes.</p>
+      {{/if}}
     {{/each}}
   </ul>
 {{else}}
