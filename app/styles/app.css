@@ -9,3 +9,7 @@ li {
 .enabled {
   background-color: white;
 }
+
+.unsaved-changes {
+  color: red;
+}
