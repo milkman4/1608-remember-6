@@ -86,3 +86,37 @@ test('while editing a reminder, revert will send the values back to the original
   });
 
 });
+
+test('if there are unsaved changes there will be a warning below the reminder title', function(assert) {
+  visit('reminders/new');
+  fillIn('.input-title', 'My new reminder');
+  fillIn('.input-date', '2016-10-10');
+  fillIn('.input-notes', 'My reminder notes');
+  click('.input-submit');
+
+  andThen(function() {
+    click('.spec-reminder-item');
+  })
+
+  andThen(function() {
+    assert.equal(currentURL(), '/reminders/1');
+    click('.reminder-edit');
+  });
+
+  andThen(function() {
+    assert.equal(currentURL(), '/reminders/edit/1');
+  });
+
+  fillIn('.input-title', 'My new reminder edited');
+
+  andThen(function() {
+    assert.equal(find('.unsaved-changes').length, 1);
+  });
+
+  click('.input-revert');
+
+  andThen(function() {
+    assert.equal(find('.unsaved-changes').length, 0);
+  });
+
+});

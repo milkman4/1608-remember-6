@@ -1,0 +1,20 @@
+@import './reset.scss';
+@import './header.scss';
+@import './sidebar.scss';
+@import './reminder.scss';
+
+.active {
+  color: aqua;
+}
+
+li {
+  list-style: none;
+}
+
+.enabled {
+  background-color: white;
+}
+
+.unsaved-changes {
+  color: red;
+}
