@@ -1,0 +1,13 @@
+header{
+  display: flex;
+  height: 75px;
+  align-items: center;
+  border-bottom: 2px solid grey;
+  #logo{
+    width: 100px;
+    display: inline-block;
+  }
+  h1{
+    display: inline-block;
+  }
+}

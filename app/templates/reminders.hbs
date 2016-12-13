@@ -1,20 +1,23 @@
-{{#if model}}
-  <ul class="reminder-list">
-    {{#each model as |reminder|}}
-      {{#link-to 'reminders.reminder' reminder}}
-        <li class='spec-reminder-item'>
-            {{reminder.title}}
-        </li>
-      {{/link-to}}
-      {{#if reminder.hasDirtyAttributes}}
-        <p class="unsaved-changes">There are unsaved changes.</p>
-      {{/if}}
-    {{/each}}
-  </ul>
-{{else}}
-  <p class="reminder-welcome">Welcome to your notes, click 'new' to add a new note</p>
-{{/if}}
+<div class="sidebar">
+  {{#link-to 'reminders.new' class="new-button"}}New{{/link-to}}
+  {{#if model}}
+    <ul class="reminder-list">
+      {{#each model as |reminder|}}
+        {{#link-to 'reminders.reminder' reminder}}
+          <li class='spec-reminder-item'>
+              {{reminder.title}}
+          </li>
+        {{/link-to}}
+        {{#if reminder.hasDirtyAttributes}}
+          <p class="unsaved-changes">There are unsaved changes.</p>
+        {{/if}}
+      {{/each}}
+    </ul>
+  {{else}}
+    <p class="reminder-welcome">Welcome to your notes, click 'new' to add a new note</p>
+  {{/if}}
+</div>
 
-{{#link-to 'reminders.new'}}New{{/link-to}}
-
-{{outlet}}
+<div class="right-side">
+  {{outlet}}
+</div>
