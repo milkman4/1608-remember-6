@@ -8,5 +8,8 @@ export default Ember.Controller.extend({
         reminder.destroyRecord();
       });
     }
-  }
+  },
+  savedReminders: Ember.computed.filter('model.@each.isNew', function(reminder, index, array) {
+    return !reminder.get('isNew');
+  })
 });

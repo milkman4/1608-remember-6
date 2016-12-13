@@ -1,15 +1,15 @@
-<form class="add-new--form" {{action 'handleSave' reminder on="submit"}}>
+<form class="add-new--form" {{action 'handleSave' model on="submit"}}>
  <label>
    Title:
-   {{input class="input-title" type="text" value=title}}
+   {{input class="input-title" type="text" value=model.title}}
  </label>
  <label>
    Date:
-   {{input class="input-date" type="date" value=date}}
+   {{input class="input-date" type="date" value=model.date}}
  </label>
  <label>
    Notes:
-   {{input class="input-notes" type="textarea" value=notes}}
+   {{input class="input-notes" type="textarea" value=model.notes}}
  </label>
 
   {{input class="input-submit" type="submit" value="save"}}
@@ -17,5 +17,5 @@
 </form>
 
 {{#if edit}}
-  <button class="input-revert {{if reminder.hasDirtyAttributes "enabled"}}" {{action 'rollback' reminder on="click"}}>Revert</button>
+  <button class="input-revert {{if reminder.hasDirtyAttributes "enabled"}}" {{action 'rollback' model on="click"}}>Revert</button>
 {{/if}}
