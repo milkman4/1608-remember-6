@@ -17,5 +17,5 @@
 </form>
 
 {{#if edit}}
-  <button class="input-revert {{if reminder.hasDirtyAttributes "enabled"}}" {{action 'rollback' model on="click"}}>Revert</button>
+  <button class="input-revert {{if reminder.hasDirtyAttributes "enabled"}}" {{action 'rollback' model}}>Revert</button>
 {{/if}}

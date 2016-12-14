@@ -7,11 +7,11 @@ export default Ember.Component.extend({
     handleSave(reminderModel) {
       reminderModel.save()
       this.sendAction("action", this.get('model'));
-      },
-      rollback(reminderModel){
-        if(reminderModel.get('hasDirtyAttributes')){
-          reminderModel.rollbackAttributes()
-        }
+    },
+    rollback(reminderModel){
+      if(reminderModel.get('hasDirtyAttributes')){
+        reminderModel.rollbackAttributes()
       }
     }
+  }
 });

@@ -7,7 +7,7 @@
   {{#link-to 'reminders.edit' reminder}}
     <button class="reminder-edit">Edit</button>
   {{/link-to}}
-  <button class="reminder-delete" {{action 'deleteReminder' reminder on="click"}} >Delete</button>
+  <button class="reminder-delete" {{action 'deleteReminder' reminder}} >Delete</button>
 {{/with}}
 
 {{outlet}}

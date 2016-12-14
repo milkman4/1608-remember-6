@@ -8,7 +8,7 @@
               {{reminder.title}}
           </li>
         {{/link-to}}
-        <button class="reminders-delete" {{action 'deleteReminder' reminder on="click"}}>X</button>
+        <button class="reminders-delete" {{action 'deleteReminder' reminder}}>X</button>
         {{#if reminder.hasDirtyAttributes}}
           <p class="unsaved-changes">There are unsaved changes.</p>
         {{/if}}
